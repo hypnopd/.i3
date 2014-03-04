@@ -4,6 +4,7 @@
 # Should you change your keyboard layout somewhen, delete
 # this file and re-run i3-config-wizard(1).
 #
+
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -12,9 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-# DEFAULT FONT
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#font -bitstream-*-*-r-*-*-*-120-*-*-*-*-*-*
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -25,7 +24,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -36,15 +35,6 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# run NM-appplet
-exec --no-startup-id nm-applet
-
-# KRB5-auth
-exec --no-startup-id krb5-auth-dialog
-
-# screen locker (first move to "safe" workspace without any chat app)
-bindsym Control+Mod1+l exec i3-msg workspace 1 && i3lock -c 111111 -d
 
 # change focus
 bindsym $mod+j focus left
@@ -108,25 +98,6 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-# switch to workspace right/left
-bindsym $mod+comma workspace prev
-bindsym $mod+period workspace next
-
-# switch to previously focused workspace
-bindsym $mod+slash workspace back_and_forth
-
-# specify outputs
-workspace 1 output HDMI3
-workspace 2 output HDMI3
-workspace 3 output HDMI3
-workspace 4 output HDMI3
-workspace 5 output HDMI3
-workspace 6 output VGA1
-workspace 7 output VGA1
-workspace 8 output VGA1
-workspace 9 output VGA1
-workspace 10 output VGA1
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -138,17 +109,6 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-
-# bindings for ThinkPad keyboard
-bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- '-10%'
-bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- '+10%'
-bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo 0
-bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
-
-# scratchpad
-bindsym $mod+m move scratchpad
-bindsym $mod+o scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -186,14 +146,5 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	position top
         status_command i3status
 }
-# screenshot
-bindsym Print exec gnome-screenshot -w
-bindsym $mod+Print gnome-screenshot -i
-
-# move workspace to output
-bindsym $mod+x move workspace to output left
-bindsym $mod+c move workspace to output right
-
