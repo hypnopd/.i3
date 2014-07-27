@@ -197,3 +197,7 @@ bindsym $mod+Print gnome-screenshot -i
 bindsym $mod+x move workspace to output left
 bindsym $mod+c move workspace to output right
 
+# keyboard layouts
+bindsym $mod+Shift+a exec setxkbmap -model thinkpad60 -layout us
+bindsym $mod+Shift+s exec setxkbmap -model thinkpad60 -layout sk -variant qwerty
+
